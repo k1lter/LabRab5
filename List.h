@@ -129,22 +129,24 @@ template<typename T>
 void List<T>::assign(unsigned short n, T value)
 {
 	Element<T>* runningElement = tailElement;
-	for (unsigned short steps(length); steps > n; steps--)
+	for (unsigned short steps(length); steps > 0; steps--)
 	{
 		length--;
 		runningElement = tailElement->pPrev;
 		delete tailElement;
 		tailElement = runningElement;
 	}
-	headElement->value = value;
+	headElement = nullptr;
+	tailElement = nullptr;
+	headElement = new Element<T>(value, nullptr, nullptr);
 	runningElement = headElement;
-	std::cout << "Length = " << length << "\n";
-	for (unsigned short step(1); step < length; step++)
+	for (unsigned short step(0); step < n; step++)
 	{
+		runningElement->pNext = new Element<T>(value, nullptr, runningElement);
 		runningElement = runningElement->pNext;
-		runningElement->value = value;
+		tailElement = runningElement;
+		length++;
 	}
-	tailElement = runningElement;
 }
 
 template<typename T>
@@ -229,6 +231,7 @@ void List<T>::show()
 	{
 		std::cout << "No elements\n";
 	}
+	std::cout << "\n";
 }
 
 //Деструктор класса List
