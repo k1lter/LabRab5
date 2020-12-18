@@ -1,19 +1,19 @@
-#include <iostream>
+п»ї#include <iostream>
 #include <initializer_list>
 template <typename T>
 class List
 {
 private:
 
-	//Создаем шаблон класса элемента односвязного списка
+	//РЎРѕР·РґР°РµРј С€Р°Р±Р»РѕРЅ РєР»Р°СЃСЃР° СЌР»РµРјРµРЅС‚Р° РѕРґРЅРѕСЃРІСЏР·РЅРѕРіРѕ СЃРїРёСЃРєР°
 	template <typename T>
 	class Element
 	{
 	public:
-		Element* pNext; //Указатель на следующий элемент. По умолчаниею NULL
-		Element* pPrev; //Указатель на предыдущий элемент. По умолчаниею NULL
-		T value; //Данные в элементе
-		Element(T value, Element* pNext = nullptr, Element* pPrev = nullptr) //Инициализация элемента через конструктор
+		Element* pNext; //РЈРєР°Р·Р°С‚РµР»СЊ РЅР° СЃР»РµРґСѓСЋС‰РёР№ СЌР»РµРјРµРЅС‚. РџРѕ СѓРјРѕР»С‡Р°РЅРёРµСЋ NULL
+		Element* pPrev; //РЈРєР°Р·Р°С‚РµР»СЊ РЅР° РїСЂРµРґС‹РґСѓС‰РёР№ СЌР»РµРјРµРЅС‚. РџРѕ СѓРјРѕР»С‡Р°РЅРёРµСЋ NULL
+		T value; //Р”Р°РЅРЅС‹Рµ РІ СЌР»РµРјРµРЅС‚Рµ
+		Element(T value, Element* pNext = nullptr, Element* pPrev = nullptr) //РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ СЌР»РµРјРµРЅС‚Р° С‡РµСЂРµР· РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
 		{
 			this->pNext = pNext;
 			this->pPrev = pPrev;
@@ -21,9 +21,9 @@ private:
 		}
 	};
 
-	short length; //Длина списка
-	Element<T>* headElement; //Первый элемент списка
-	Element<T>* tailElement; //Последний элемент списка
+	short length; //Р”Р»РёРЅР° СЃРїРёСЃРєР°
+	Element<T>* headElement; //РџРµСЂРІС‹Р№ СЌР»РµРјРµРЅС‚ СЃРїРёСЃРєР°
+	Element<T>* tailElement; //РџРѕСЃР»РµРґРЅРёР№ СЌР»РµРјРµРЅС‚ СЃРїРёСЃРєР°
 
 public:
 	List();
@@ -48,7 +48,7 @@ public:
 
 };
 
-//Конструктор класса List по умолчанию.
+//РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєР»Р°СЃСЃР° List РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ.
 template <typename T>
 List<T>::List()
 {
@@ -57,7 +57,7 @@ List<T>::List()
 	tailElement = nullptr;
 }
 
-//Конструктор класса List с одним агрументом.
+//РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєР»Р°СЃСЃР° List СЃ РѕРґРЅРёРј Р°РіСЂСѓРјРµРЅС‚РѕРј.
 template <typename T>
 List<T>::List(T value)
 {
@@ -67,7 +67,7 @@ List<T>::List(T value)
 
 }
 
-//Конструктор класса List со списком аргументов.
+//РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєР»Р°СЃСЃР° List СЃРѕ СЃРїРёСЃРєРѕРј Р°СЂРіСѓРјРµРЅС‚РѕРІ.
 template <typename T>
 List<T>::List(std::initializer_list<T> value)
 {
@@ -83,7 +83,7 @@ List<T>::List(std::initializer_list<T> value)
 
 }
 
-//Метод добавляет новый элемент в конец списка.
+//РњРµС‚РѕРґ РґРѕР±Р°РІР»СЏРµС‚ РЅРѕРІС‹Р№ СЌР»РµРјРµРЅС‚ РІ РєРѕРЅРµС† СЃРїРёСЃРєР°.
 template<typename T>
 void List<T>::push_back(T data)
 {
@@ -106,7 +106,7 @@ void List<T>::push_back(T data)
 	}
 }
 
-//Метод добавляет новый элемент в начало списка.
+//РњРµС‚РѕРґ РґРѕР±Р°РІР»СЏРµС‚ РЅРѕРІС‹Р№ СЌР»РµРјРµРЅС‚ РІ РЅР°С‡Р°Р»Рѕ СЃРїРёСЃРєР°.
 template<typename T>
 void List<T>::push_front(T data)
 {
@@ -124,7 +124,7 @@ void List<T>::push_front(T data)
 	}
 }
 
-//Метод заменяет содержимое контейнера N элементами, которые имеют значение Value.
+//РњРµС‚РѕРґ Р·Р°РјРµРЅСЏРµС‚ СЃРѕРґРµСЂР¶РёРјРѕРµ РєРѕРЅС‚РµР№РЅРµСЂР° N СЌР»РµРјРµРЅС‚Р°РјРё, РєРѕС‚РѕСЂС‹Рµ РёРјРµСЋС‚ Р·РЅР°С‡РµРЅРёРµ Value.
 template<typename T>
 void List<T>::assign(unsigned short n, T value)
 {
@@ -183,21 +183,21 @@ void List<T>::insert(unsigned short pos, T value)
 	}
 }
 
-//Метод возвращает первый элемент в списке.
+//РњРµС‚РѕРґ РІРѕР·РІСЂР°С‰Р°РµС‚ РїРµСЂРІС‹Р№ СЌР»РµРјРµРЅС‚ РІ СЃРїРёСЃРєРµ.
 template<typename T>
 T List<T>::front()
 {
 	return headElement->value;
 }
 
-//Метод возвращает последний элемент в списке.
+//РњРµС‚РѕРґ РІРѕР·РІСЂР°С‰Р°РµС‚ РїРѕСЃР»РµРґРЅРёР№ СЌР»РµРјРµРЅС‚ РІ СЃРїРёСЃРєРµ.
 template<typename T>
 T List<T>::back()
 {
 	return tailElement->value;
 }
 
-//Метод полностью очищает список.
+//РњРµС‚РѕРґ РїРѕР»РЅРѕСЃС‚СЊСЋ РѕС‡РёС‰Р°РµС‚ СЃРїРёСЃРѕРє.
 template<typename T>
 void List<T>::clear()
 {
@@ -214,7 +214,7 @@ void List<T>::clear()
 	tailElement = nullptr;
 }
 
-//Метод демнострирует все элементы списка. (!!!ВРЕМЕННЫЙ МЕТОД!!!)
+//РњРµС‚РѕРґ РґРµРјРЅРѕСЃС‚СЂРёСЂСѓРµС‚ РІСЃРµ СЌР»РµРјРµРЅС‚С‹ СЃРїРёСЃРєР°. (!!!Р’Р Р•РњР•РќРќР«Р™ РњР•РўРћР”!!!)
 template<typename T>
 void List<T>::show()
 {
@@ -234,7 +234,7 @@ void List<T>::show()
 	std::cout << "\n";
 }
 
-//Деструктор класса List
+//Р”РµСЃС‚СЂСѓРєС‚РѕСЂ РєР»Р°СЃСЃР° List
 template <typename T>
 List<T>::~List()
 {
@@ -248,14 +248,14 @@ List<T>::~List()
 	delete tailElement, headElement, runningElement;
 }
 
-//Метод возвращает длину списка.
+//РњРµС‚РѕРґ РІРѕР·РІСЂР°С‰Р°РµС‚ РґР»РёРЅСѓ СЃРїРёСЃРєР°.
 template <typename T>
 T List<T>::size()
 {
 	return length;
 }
 
-//Метод оставляет Elements первых элементов списка. Если элементов меньше, чем Elements, то добавляются элементы со значением по умолчанию.
+//РњРµС‚РѕРґ РѕСЃС‚Р°РІР»СЏРµС‚ Elements РїРµСЂРІС‹С… СЌР»РµРјРµРЅС‚РѕРІ СЃРїРёСЃРєР°. Р•СЃР»Рё СЌР»РµРјРµРЅС‚РѕРІ РјРµРЅСЊС€Рµ, С‡РµРј Elements, С‚Рѕ РґРѕР±Р°РІР»СЏСЋС‚СЃСЏ СЌР»РµРјРµРЅС‚С‹ СЃРѕ Р·РЅР°С‡РµРЅРёРµРј РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ.
 template<typename T>
 void List<T>::resize(unsigned short elements)
 {
@@ -281,7 +281,7 @@ void List<T>::resize(unsigned short elements)
 	}
 }
 
-//Метод оставляет Elements первых элементов списка. Если элементов меньше, чем Elements, то добавляются элементы со значением Value.
+//РњРµС‚РѕРґ РѕСЃС‚Р°РІР»СЏРµС‚ Elements РїРµСЂРІС‹С… СЌР»РµРјРµРЅС‚РѕРІ СЃРїРёСЃРєР°. Р•СЃР»Рё СЌР»РµРјРµРЅС‚РѕРІ РјРµРЅСЊС€Рµ, С‡РµРј Elements, С‚Рѕ РґРѕР±Р°РІР»СЏСЋС‚СЃСЏ СЌР»РµРјРµРЅС‚С‹ СЃРѕ Р·РЅР°С‡РµРЅРёРµРј Value.
 template<typename T>
 void List<T>::resize(unsigned short elements, T value)
 {
@@ -307,7 +307,7 @@ void List<T>::resize(unsigned short elements, T value)
 	}
 }
 
-//Метод удаляет последний элемент списка.
+//РњРµС‚РѕРґ СѓРґР°Р»СЏРµС‚ РїРѕСЃР»РµРґРЅРёР№ СЌР»РµРјРµРЅС‚ СЃРїРёСЃРєР°.
 template<typename T>
 void List<T>::pop_back()
 {
@@ -317,7 +317,7 @@ void List<T>::pop_back()
 	tailElement = transit;
 }
 
-//Метод удаляет первый элемент списка.
+//РњРµС‚РѕРґ СѓРґР°Р»СЏРµС‚ РїРµСЂРІС‹Р№ СЌР»РµРјРµРЅС‚ СЃРїРёСЃРєР°.
 template<typename T>
 void List<T>::pop_front()
 {
@@ -327,7 +327,7 @@ void List<T>::pop_front()
 	headElement = transit;
 }
 
-//Метод возвращает ИСТИНО если список пустой, и ЛОЖНО если нет.
+//РњРµС‚РѕРґ РІРѕР·РІСЂР°С‰Р°РµС‚ РРЎРўРРќРћ РµСЃР»Рё СЃРїРёСЃРѕРє РїСѓСЃС‚РѕР№, Рё Р›РћР–РќРћ РµСЃР»Рё РЅРµС‚.
 template<typename T>
 bool List<T>::empty()
 {
