@@ -38,6 +38,7 @@ void DoubleMin(List<double>* object)
 int main()
 {
 	List<double> object({ 3, 2, 3 });
+	std::cout << "До обработки:\n";
 	object.show();
 	DoubleMin(&object);
 	object.show();
