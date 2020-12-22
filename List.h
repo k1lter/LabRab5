@@ -4,8 +4,7 @@ template <typename T>
 class List
 {
 private:
-
-	//Создаем шаблон класса элемента односвязного списка
+	//Создаем шаблон класса элемента двусвязного списка
 	template <typename T>
 	class Element
 	{
@@ -21,31 +20,30 @@ private:
 		}
 	};
 
+public:
 	short length; //Длина списка
 	Element<T>* headElement; //Первый элемент списка
 	Element<T>* tailElement; //Последний элемент списка
-
-public:
 	List();
 	List(T value);
+	List(std::initializer_list<T> value);
 	~List();
 	T size();
+	T front();
+	T back();
 	void resize(unsigned short elements);
 	void resize(unsigned short elements, T value);
 	void pop_back();
 	void pop_front();
-	bool empty();
 	void push_back(T data);
 	void push_front(T data);
 	void assign(unsigned short n, T value);
 	void insert(unsigned short pos, T value);
-	T front();
-	T back();
 	void clear();
 	void show();
-
-	List(std::initializer_list<T> value);
-
+	Element<T>* begin();
+	Element<T>* end();
+	bool empty();
 };
 
 //Конструктор класса List по умолчанию.
@@ -62,7 +60,7 @@ template <typename T>
 List<T>::List(T value)
 {
 	length = 1;
-	headElement = new Element<T>(value,nullptr, nullptr);
+	headElement = new Element<T>(value, nullptr, nullptr);
 	tailElement = nullptr;
 
 }
@@ -99,9 +97,8 @@ void List<T>::push_back(T data)
 		{
 			runningElement = runningElement->pNext;
 		}
-		runningElement->pNext = new Element<T>(data);
+		runningElement->pNext = new Element<T>(data, nullptr, runningElement);
 		tailElement = runningElement->pNext;
-		tailElement->pPrev = runningElement;
 		length++;
 	}
 }
@@ -220,10 +217,10 @@ void List<T>::show()
 {
 	if (length != 0)
 	{
-		Element<T>* runningElement = this->headElement;
+		Element<T>* runningElement = headElement;
 		for (unsigned short steps(0); steps < length; steps++)
 		{
-			std::cout << runningElement->value;
+			std::cout << runningElement->value << " ";
 			runningElement = runningElement->pNext;
 		}
 	}
@@ -234,18 +231,36 @@ void List<T>::show()
 	std::cout << "\n";
 }
 
+template<typename T>
+List<T>::Element<T>* List<T>::begin()
+{
+	return headElement;
+}
+template<typename T>
+List<T>::Element<T>* List<T>::end()
+{
+	return tailElement;
+}
+
 //Деструктор класса List
 template <typename T>
 List<T>::~List()
 {
 	Element<T>* runningElement = tailElement;
-	for (unsigned short steps(length); steps != 0; steps--)
+	if (length > 1)
 	{
-		runningElement = tailElement->pPrev;
-		delete tailElement;
-		tailElement = runningElement;
+		for (unsigned short steps(length); steps > 0; steps--)
+		{
+			runningElement = tailElement->pPrev;
+			delete tailElement;
+			tailElement = runningElement;
+		}
+		delete tailElement, headElement, runningElement;
 	}
-	delete tailElement, headElement, runningElement;
+	else
+	{
+		delete headElement, runningElement;
+	}
 }
 
 //Метод возвращает длину списка.
@@ -323,7 +338,6 @@ void List<T>::pop_front()
 {
 	length--;
 	Element<T>* transit = headElement->pNext;
-	delete transit->pPrev;
 	headElement = transit;
 }
 
