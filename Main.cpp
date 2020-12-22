@@ -1,9 +1,42 @@
 ﻿#include <iostream>
+#include <string>
 #include "List.h"
 
-void DoubleMin(List<double>* object)
+template <typename T>
+void DoubleMin(List<T>* object)
 {
-	double min = DBL_MAX;
+	T min = T();
+	std::string check = typeid(T).name();
+	{
+		if (check == "char")
+		{
+			min = CHAR_MAX;
+		}
+		else if (check == "short")
+		{
+			min = SHRT_MAX;
+		}
+		else if (check == "int")
+		{
+			min = INT_MAX;
+		}
+		else if (check == "long")
+		{
+			min = LONG_MAX;
+		}
+		else if (check == "float")
+		{
+			min = FLT_MAX;
+		}
+		else if (check == "double")
+		{
+			min = DBL_MAX;
+		}
+		else
+		{
+			std::cout << "Error! Wrong type!\n\a";
+		}
+	}
 	unsigned short minPos = 1;
 	if (object->size() > 1)
 	{
@@ -38,7 +71,7 @@ void DoubleMin(List<double>* object)
 int main()
 {
 	setlocale(LC_ALL, "russian");
-	List<double> object({ 3, 2, 3 });
+	List<int> object({ 3, 2, 3 });
 	std::cout << "До обработки:\n";
 	object.show();
 	DoubleMin(&object);
