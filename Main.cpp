@@ -37,10 +37,12 @@ void DoubleMin(List<double>* object)
 
 int main()
 {
+	setlocale(LC_ALL, "russian");
 	List<double> object({ 3, 2, 3 });
 	std::cout << "До обработки:\n";
 	object.show();
 	DoubleMin(&object);
+	std::cout << "После обработки:\n";
 	object.show();
 	system("pause");
 }

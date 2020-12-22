@@ -228,7 +228,7 @@ void List<T>::show()
 	{
 		std::cout << "No elements\n";
 	}
-	std::cout << "\n";
+	std::cout << "\n\n";
 }
 
 template<typename T>
