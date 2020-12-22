@@ -72,6 +72,7 @@ int main()
 {
 	setlocale(LC_ALL, "russian");
 	List<int> object({ 3, 2, 3 });
+	object.insert(2, 5);
 	std::cout << "До обработки:\n";
 	object.show();
 	DoubleMin(&object);

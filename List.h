@@ -146,6 +146,7 @@ void List<T>::assign(unsigned short n, T value)
 	}
 }
 
+//Метод позволяет добавить элемент в любую позицию списка.
 template<typename T>
 void List<T>::insert(unsigned short pos, T value)
 {
@@ -231,11 +232,14 @@ void List<T>::show()
 	std::cout << "\n\n";
 }
 
+//Возвращает указатель на первый элемент списка.
 template<typename T>
 List<T>::Element<T>* List<T>::begin()
 {
 	return headElement;
 }
+
+//Возвращает указатель на последний элемент списка.
 template<typename T>
 List<T>::Element<T>* List<T>::end()
 {
