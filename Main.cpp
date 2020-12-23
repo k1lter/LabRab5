@@ -3,6 +3,22 @@
 #include "List.h"
 
 template <typename T>
+void DoubleMin(List<T>* object);
+
+int main()
+{
+	setlocale(LC_ALL, "russian");
+	List<int> object({ 3, 2, 3 });
+	object.insert(2, 5);
+	std::cout << "До обработки:\n";
+	object.show();
+	DoubleMin(&object);
+	std::cout << "После обработки:\n";
+	object.show();
+	system("pause");
+}
+
+template <typename T>
 void DoubleMin(List<T>* object)
 {
 	T min = T();
@@ -66,17 +82,4 @@ void DoubleMin(List<T>* object)
 	{
 		object->begin()->value *= 2;
 	}
-}
-
-int main()
-{
-	setlocale(LC_ALL, "russian");
-	List<int> object({ 3, 2, 3 });
-	object.insert(2, 5);
-	std::cout << "До обработки:\n";
-	object.show();
-	DoubleMin(&object);
-	std::cout << "После обработки:\n";
-	object.show();
-	system("pause");
 }
